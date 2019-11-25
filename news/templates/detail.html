@@ -1,0 +1,374 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+		<meta name="360-site-verification" content="b96e1758dfc9156a410a4fb9520c5956">
+		<meta name="360_ssp_verify" content="2ae4ad39552c45425bddb738efda3dbb">
+		<meta name="google-site-verification" content="3PYTTW0s7IAfkReV8wAECfjIdKY-bQeSkVTyJNZpBKE">
+		<meta name="shenma-site-verification" content="34c05607e2a9430ad4249ed48faaf7cb_1432711730">
+		<meta name="baidu_union_verify" content="b88dd3920f970845bad8ad9f90d687f7">
+		<meta name="domain_verify" content="pmrgi33nmfuw4ir2ej2g65lunfqw6ltdn5wselbcm52wszbchirdqyztge3tenrsgq3dknjume2tayrvmqytemlfmiydimddgu4gcnzcfqrhi2lnmvjwc5tfei5dcnbwhazdcobuhe2dqobrpu">
+		<!--[if lt IE 9]>
+  <p>您的浏览器版本过低，请<a href="http://browsehappy.com/">升级浏览器</a></p>
+<![endif]-->
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<link rel="alternate" media="only screen and (max-width: 640px)" href="">
+		<title>{{ News.news_title }}</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="{{ News.news_title }}">
+		
+		<link rel="stylesheet" href="{% static 'css/index.b6ded31d7cf385f22017652a39280c0a.css'%}">
+		
+		<script type="text/javascript" src="{% static 'js/jquery-1.4.4.min.js'%}"></script>
+		<script>
+		var i=1;
+		var style="{{News.style}}";
+		function loadmore(v) {
+		debugger
+		var url = window.location.pathname,
+		url = "{%url 'news:loadmore'%}"
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		$('.list').append(xmlhttp.responseText);
+		}
+		}
+		if (v=== undefined){
+		xmlhttp.open("GET", url + "?page=" + i, true);}
+		else{xmlhttp.open("GET",url + "?page=" + i+"&type="+v, true);}
+		i = i + 1;
+		xmlhttp.send(null);
+		};
+		
+		</script>
+		<script>
+$(document).scroll(function() {
+if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+loadmore(style);
+}
+});</script>
+		<style type="text/css">
+			@keyframes resizeanim {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 0;
+				}
+			}
+			
+			.resize-triggers {
+				animation: 1ms resizeanim;
+				visibility: hidden;
+				opacity: 0;
+			}
+			
+			.resize-triggers,
+			.resize-triggers>div,
+			.contract-trigger:before {
+				content: " ";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.resize-triggers>div {
+				background: #eee;
+				overflow: auto;
+			}
+			
+			.contract-trigger:before {
+				width: 200%;
+				height: 200%;
+			}
+		</style>
+		<style id="14d045e">
+			.imga_wrapper {
+				position: relative;
+				display: inline-block;
+			}
+			
+			.imga_flag {
+				display: inline-block;
+				position: absolute;
+				bottom: 8px;
+				left: 8px;
+				border: 1px solid #fff;
+				color: #fff;
+				font-size: 12px;
+				line-height: 12px;
+				height: 12px;
+				padding: 1px 2px;
+				text-align: center;
+			}
+		</style>
+		<style id="fef55df">
+			.bd-bottom-1 {
+				padding-left: 10px
+			}
+		</style>
+		<style id="9279f22">
+			.right-top-1 {
+				margin-bottom: 30px
+			}
+		</style>
+		<style id="2597cb3">
+			.right-top-2 {
+				margin-bottom: 30px
+			}
+		</style>
+		<style id="eb66a28">
+			.right-top-3 {
+				margin-bottom: 30px
+			}
+		</style>
+		<style id="b94e2a8">
+			.right-top-4 {
+				margin-bottom: 30px
+			}
+		</style>
+		<style id="6d6acea">
+			.right-hover-1 {
+				position: fixed;
+				top: 20px;
+			}
+			
+			#imagindexhover ins {
+				position: absolute !important
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div class="toutiao-header">
+				<div class="topbar">
+					<!---->
+					<div class="bui-left clearfix"></div>
+					<div class="bui-right">
+						<ul class="user-nav-list clearfix">
+							<!---->
+							<li>
+								<div class="tt-dropdown">
+									<div class="tt-dropdown-link tb-link">
+										<a href="" ga_event="mh_nav_user" target="_blank" rel="nofollow" class="user-name"><img src="" class="user-avatar">user.name
+										</a>
+									</div>
+									<ul class="tt-dropdown-menu" style="display: none;">
+										<li class="tt-dropdown-menu__item">
+											<a href="" target="_blank" rel="nofollow" class="layer-item">我的收藏</a>
+										</li>
+										<li class="tt-dropdown-menu__item">
+											<a href="" target="_blank" rel="nofollow" class="layer-item">我的关注</a>
+										</li>
+										<li class="tt-dropdown-menu__item">
+											<a href="" target="_blank" rel="nofollow" class="layer-item">我的粉丝</a>
+										</li>
+										<li class="tt-dropdown-menu__item tt-dropdown-menu__item--divided">
+											<a href="" rel="nofollow" class="layer-item">退出</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<!---->
+							<li>
+								<div class="feedback">
+									<a href="javascript:void(0)" class="feedback-text">反馈</a>
+									<div class="tt-dialog__wrapper" style="display: none;">
+										<div class="tt-dialog tt-dialog--tiny" style="top: 15%;">
+											<div class="tt-dialog__header"><span class="tt-dialog__title">意见反馈</span>
+												<div class="tt-dialog__headerbtn"><i class="tt-dialog__close bui-icon icon-close_big"></i></div>
+											</div>
+											<!---->
+											<div class="tt-dialog__footer"><span class="dialog-footer"><button type="button" class="tt-button tt-button--default"><!----> <!----> <span>取消</span></button> <button type="button" class="tt-button submit tt-button--primary"><!----> <!----> <span>确认</span></button></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="" ga_event="mh_nav_complain" target="blank" class="tb-link">侵权投诉</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="middlebar">
+					<div class="middlebar-inner clearfix" style="width: 1170px;">
+						<div class="bui-left logo-box">
+							<a href=".." ga_event="go_home" class="logo-link"><img src="{%static 'images/logo.png'%}" class="logo"></a>
+						</div>
+						<div class="bui-left chinese-tag">
+							<span class="text">正文</span></div>
+						<div ga_event="middlebar_search" class="bui-right">
+							<div class="search-wrap">
+								<div class="tt-autocomplete">
+									<div class="tt-input tt-input-group tt-input-group--append">
+										<!---->
+										<!----><input type="text" placeholder="请输入要搜索的内容" autocomplete="off" class="tt-input__inner">
+										<!---->
+										<div class="tt-input-group__append"><button type="button" class="tt-button tt-button--default"><!----> <!----> <span>搜索</span></button></div>
+									</div>
+									<div class="tt-autocomplete-suggestion" style="display: none;">
+										<div class="tt-scrollbar">
+											<div class="tt-autocomplete-suggestion__wrap tt-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
+												<ul class="tt-scrollbar__view tt-autocomplete-suggestion__list" style="position: relative;">
+													<div class="resize-triggers">
+														<div class="expand-trigger">
+															<div style="width: 1px; height: 1px;"></div>
+														</div>
+														<div class="contract-trigger"></div>
+													</div>
+												</ul>
+											</div>
+											<div class="tt-scrollbar__bar is-horizontal">
+												<div class="tt-scrollbar__thumb" style="transform: translateX(0%);"></div>
+											</div>
+											<div class="tt-scrollbar__bar is-vertical">
+												<div class="tt-scrollbar__thumb" style="transform: translateY(0%);"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bui-box container">
+				<div class="bui-left index-left">
+					<div class="share-box" comment-count="893">
+						<a href="" ga_event="click_comment_anchor" class="share-count"><i class="bui-icon icon-comments_anchor" style="font-size: 30px; color: rgb(248, 89, 89);"></i> <span>893</span></a>
+						<div class="share-hr"></div>
+						<div ga_event="click_repost" class="share-type"><img src="" class="repost-img"><span>转发</span></div>
+						<div ga_event="click_share_weibo" class="share-type"><i class="bui-icon icon-sina" style="font-size: 34px; color: rgb(255, 102, 49);"></i><span>微博</span></div>
+						<div ga_event="click_share_qzone" class="share-type"><i class="bui-icon icon-qzone" style="font-size: 34px; color: rgb(255, 189, 29);"></i><span>Qzone</span></div>
+						<div ga_event="click_share_weixin" class="share-type share-weixin"><i class="bui-icon icon-wechat" style="font-size: 34px; color: rgb(82, 205, 62);"></i><span>微信</span>
+							<div class="share-qrcode">
+								<div id="J_qrcode"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bui-left index-middle">
+					<div class="article-box">
+						<h1 class="article-title">{{ News.news_title }}</h1>
+						<div class="article-sub"><span class="original">原创</span> <span>{{News.writer.writer_name}}</span> <span>{{News.date}}</span></div>
+						<div class="article-content">
+							<div>
+								<p></p>
+								{% if V%}
+								{%for video in V%}
+								<div class="tt-video-box" tt-videoid="v02004190000bmvc6vqikatjgh2hpl6g" tt-poster="" tt-datainited="1" style="width: 640px; height: 360px; margin: 0px auto; background-color: rgb(0, 0, 0);">
+									<video src="..{{MEDIA_URL}}/{{video.video_path}}" type="video/mp4"  controls="" preload="none" style="width:100%;height:100%;">
+</video>
+								</div>
+								{%endfor%}
+								{%endif%}
+								<div>{{News.text|safe}}</div>
+							</div>
+						</div>
+						<!---->
+						<div class="bui-box article-tag">
+							<div class="bui-left"><i class="bui-icon icon-tag" style="font-size: 21px; color: rgb(202, 202, 202);"></i>
+
+							</div>
+							<div class="bui-right">
+								<div class="repin"><i class="bui-icon icon-favorite_line" style="font-size: 18px; color: rgb(202, 202, 202);"></i><span>收藏</span></div>
+								<div class="report">
+									<div class="areport"><i class="bui-icon icon-report" style="font-size: 14px; color: rgb(202, 202, 202);"></i><span>举报</span></div>
+									<div class="tt-dialog__wrapper" style="display: none;">
+										<div class="tt-dialog tt-dialog--tiny" style="top: 15%;">
+											<div class="tt-dialog__header"><span class="tt-dialog__title">举报文章问题</span>
+												<div class="tt-dialog__headerbtn"><i class="tt-dialog__close bui-icon icon-close_big"></i></div>
+											</div>
+											<!---->
+											<div class="tt-dialog__footer"><span class="dialog-footer"><button type="button" class="tt-button tt-button--default"><!----> <!----> <span>取消</span></button> <button type="button" class="tt-button tt-button--primary"><!----> <!----> <span>确认</span></button></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ad-cursor="" name="adetail_main*bottom_1" id="J_ad_baidu_bottom" class="bd-bottom-1" ad_name="h_640*60_TB_146" done="1" show="">
+						
+						
+					</div>
+
+					<div class="detail-feed">
+						<div class="title">相关推荐</div>
+						<div class="feed-infinite-wrapper">
+							<ul class="list" infinite-scroll-disabled="loading" infinite-scroll-immediate-check="containerCheck" infinite-scroll-immediate-check-count="containerCheckCount" infinite-scroll-distance="80">
+								<!---->
+								<!---->
+
+								
+								
+							</ul>
+							<div class="loading ball-pulse" style="display: inline;">
+								<div></div>
+								<div></div>
+								<div></div> <span> <a href="javascript:loadmore(style)" id="more">点击加载此处更多⋅</a></span></div>
+						</div>
+					</div>
+				</div>
+				<div class="bui-right index-right">
+					<div class="pane-module">
+						<!---->
+						<div class="user-card">
+							<div class="user-card-head">
+								<a target="_blank" href="/writer?writer_name={{News.writer.writer_name}}" class="user-card-avatar"><img src="" alt=""></a>
+								<div class="user-card-name">
+									<a href="/writer?writer_name={{News.writer.writer_name}}" target="_blank">{{News.writer.writer_name}}</a>
+									<div ga_event="follow_pgc" class="subscribe">
+										<div class="left-arrow subscribe-btn"><i class="bui-icon icon-add_small" style="font-size: 12px; color: rgb(255, 255, 255);"></i><span>关注</span></div>
+									</div>
+								</div>
+							</div>
+							<ul class="user-card-article-list">
+								<li class="user-card-article-item">
+									<a href="" target="_blank">美国机场一乘客过安检时，被发现包里藏有一把“不寻常的手枪”</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div name="adetail_right*top_1" class="right-top-1 right-img right-lm-img" ad-cursor="1" ad_name="h_300*250_TB_456" done="1" show="1">
+						<a style="display:none;" id="tanx-a-mm_32479643_3494618_56064456"></a>
+					</div>
+					<div class="pane-module">
+						<div class="module-head">精彩图片</div>
+						<ul ga_event="click_pictures_recommend" class="module-content bui-box picture-list">
+							<li class="bui-left picture-item">
+								<a href="" target="_blank" class="link">
+									<div class="module-pic picture-img"><img alt="" src="./detail_files/5e23fb3515894cf1ac309912738b51b2" lazy="loaded"> <i class="module-tag"><span>8图</span></i></div>
+									<p>青春结伴，没有遗憾</p>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+					<!---->
+				</div>
+			</div>
+			<ul data-v-5c014667="" class="toolbar">
+				<!---->
+				<!---->
+				<!---->
+				<!---->
+			</ul>
+		</div>
+
+	</body>
+
+</html>

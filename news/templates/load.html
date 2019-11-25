@@ -1,0 +1,21 @@
+{% if news_list %}
+		{% for news in news_list %}
+		
+		<li class="clearfix">
+			<div class="video-img">
+			
+				<a href="/{{news.0.id}}" target="_blank" title="{{ news.0.news_title}}"><img data-echo="" src="{{news.1}}"><i class="pic-tip video-tip"><span></span></i></a>
+			</div>
+			<div class="video-info">
+				<div class="video-info-inner">
+					<h3><a href="/{{news.0.id}}" target="_blank" title="{{ news.0.news_title}}">{{news.0.news_title}}</a></h3>
+					<div class="video-from">
+						<a href="" target="_blank" class="media-avatar"><img data-echo="" src=""></a>
+						<a href="/writer?writer_name={{news.0.writer.writer_name}}" target="_blank" class="source">{{news.0.writer.writer_name}}<em class="indent-tag"></em></a>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		{% endfor %}
+{% endif %}

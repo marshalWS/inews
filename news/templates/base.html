@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'css/style3.css'%}" rel="stylesheet" type="text/css" media="all"/>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+<script type="text/javascript" src="{% static 'js/jquery-1.4.4.min.js'%}"></script>
+
+<script>$(document).ready(function(){
+  $("button#sendCode").click(function(){
+     var email=document.getElementById('email').value;
+
+    var url = window.location.pathname,
+		url = "../sendEmail"
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		alert(xmlHttp.responseText);
+		}
+		}
+		xmlhttp.open("GET", url + "?email=" + email, true);
+		xmlhttp.send(null);
+  });
+});</script>
+</head>
+<body>
+<div class="signupform">
+<h1>Interior Register Form</h1>
+	<div class="container">
+		<div class="agile_info">
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h3>Welcome !</h3>
+					<h4>Lorem ipsum dolor sit amet, nulla consectetur adipiscing elit Sed.</h4>
+					<p> Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui. Nulla tellus nisl, semper id justo vel, rutrum finibus risus. Cras vel auctor odio.</p>
+					<ul class="social_section_1info">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="w3_pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#" class="w3_vimeo"><i class="fa fa-vimeo"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="w3_info">
+				<h2>{{type}}</h2>
+				<p>Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui dolor sit.</p>
+				
+						<form action="" method="post">  
+    					{% csrf_token %}
+    					{% for field in form %}
+    					{{ field.label }}
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="false"></i></span>
+							{{ field }}{{ field.errors.0 }}
+						</div>
+						 {% endfor %}
+							<input type="checkbox" value="remember-me" /> <h4>Send me latest updates </h4>
+							{%ifequal type 'signup'%}
+							<button  type="button" id="sendCode" class="btn btn-danger btn-block">send code</button > 
+							{% endifequal %}     
+							<button class="btn btn-danger btn-block" type="submit">{{type}}</button >                
+					</form>
+			</div>
+			<div class="clear"></div>
+			</div>
+			
+		</div>
+		<div class="footer">
+
+ <p>Copyright &copy; 2018.Company name All rights reserved.&#x7F51;&#x9875;&#x6A21;&#x677F;</p>
+ </div>
+	</div>
+	</body>
+</html>

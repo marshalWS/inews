@@ -1,0 +1,79 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+		<meta name="renderer" content="webkit">
+
+		<title>{{writer.writer_name}}</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="{% static 'css/personal.css' %}">
+		<script>
+			var appId = 87495;
+			var baiduspider = 0;
+		</script>
+		
+	</head>
+
+	<body>
+		<div id="main">
+			<div id="leftSide">
+				
+			</div>
+			<div id="mainSide">
+				<div class="userInfos">
+					<img src="" class="bg">
+					<div class="details-info">
+						<img src="" class="avatar">
+						<div class="infos">
+							<h2>
+                        <span class="name">{{writer.writer_name}}</span>
+                       
+                      
+                         <span class="from"></span>
+                   
+                    </h2>
+							<p class="des"> {{writer.text}}</p>
+						</div>
+						<button class="btn">订阅</button>
+						<button class="btn" rssed="0">订阅</button></div>
+				</div>
+				<div class="info-flow">
+					<h3>TA的新闻</h3>
+					<div class="result">
+					{% if news_list %}
+						<ul>
+						 {% for news in news_list %}
+							<li class="clearfix">
+								<a href="/{{news.id}}" target="_blank">
+									<div class="video-img"><img data-echo="" src=""><i class="pic-tip"><span></span></i></div>
+									<div class="video-info">
+										<div class="video-info-inner">
+											<h2>{{ news.news_title }}</h2></div>
+									</div>
+								</a>
+							</li>
+						{%endfor%}
+						</ul>
+					{%endif%}
+					</div>
+				</div>
+				<!-- 信息流end -->
+				<div class="recommend">
+					<h3>达人推荐</h3>
+					<div class="list">
+						<a href=""><img src="" class="pic">
+							<p class="name">肥喵动物</p><em class="indent-tag"></em></a><button class="btn" data-appid="67442">订阅</button></div>
+					</div>
+				<!-- 达人推荐 -->
+			</div>
+		</div>
+		<script src="{% static 'js/jquery-1.4.4.min.js' %}"></script>
+	</body>
+
+</html>

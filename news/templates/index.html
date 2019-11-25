@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>inews</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="keywords" content="新闻">
+    <meta name="description" content="一站纵览，权威资讯">
+    <meta property="fb:pages" content="855641774620029">
+    <link rel="stylesheet" href="{% static 'css/style-index-min.css'%}">
+    <!--[if lt IE 9]>
+    
+  <script src="//apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{% static 'js/jquery-1.4.4.min.js'%}"></script>
+	<script> var i = 3; var type;
+	function loadmore(v) {
+		debugger
+		var url = window.location.pathname,
+		url = "loadmore"
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		$('.list').append(xmlhttp.responseText);
+		}
+		}
+		if (v=== undefined){
+		xmlhttp.open("GET", url + "?page=" + i, true);}
+		else{xmlhttp.open("GET", url + "?page=" + i+"&type="+v, true);}
+		i = i + 1;
+		xmlhttp.send(null);
+		};
+	function reflash(v){debugger
+		var url = window.location.pathname,
+		url = "loadmore"
+		var j=1;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		$('.list').html(xmlhttp.responseText);
+		}
+		}
+		if (v=== undefined){
+		xmlhttp.open("GET", url + "?page=" + j, true);}
+		else{xmlhttp.open("GET", url + "?page=" +j +"&type="+v, true);}
+		xmlhttp.send(null);
+		} ;
+	function randfresh(){};
+	function political(){
+		type="时政";
+		reflash(type);
+		
+	}
+	function economy(){
+		type="经济";
+		reflash(type);
+	}
+	function bug(){
+		type="<class";
+		reflash(type);
+	}
+</script>
+</head>
+<body style="">
+     <form method="post" action="" id="form1" class="nice-validator n-default" novalidate="novalidate">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTExNDcxMzQ3MTlkZE9KXPMZ2MaVhjTc4YqRj3QQSabFnlzkiS5XlejRUKws">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E21AFCE">
+</div>
+    <header id="header" class="clearfix">
+  <h1>欢迎来到爱新闻^_^！</h1>
+
+  {%ifequal is_auth 0 %}
+   <span class="login_btn" style="display: inline-block;"><a href="{%url 'news:login'%}">登录/注册</a></span>
+  {%else%}
+   <div class="user-infos" style="display:inline-block;">
+  	<a href="user/{{user.id}}">
+    <img src="../img/{{user.head_img}}.jpg" alt="">
+      <span class="name">{{user.username}}</span>
+    </div></a>  
+    <span class="login_btn" href="{% url 'news:logout'%}"style="display: inline-block;">退出</span>
+   		
+   {%endifequal%}
+</header>
+    <div id="main">
+        ﻿<div id="leftSide">
+  <h1>
+    <img src="{%static 'images/logo.png'%}" width="100%">
+  </h1>
+  <ul>
+    <li class="on"><a href="" typeid="100">首页</a></li>
+    <li><a href="javascript:political()" typeid="124">时政</a></li>
+    <li><a href="javascript:economy()" typeid="101">财经</a></li>
+    <li><a href="javascript:bug()" typeid="3">bug</a></li>
+    <li><a href="" typeid="20">奇闻</a></li>
+    <li><a href="" typeid="105">美女</a></li>
+    <li><a href="" typeid="21">游戏</a></li>
+    <li><a href="" typeid="108">科技</a></li>
+    <li><a href="" typeid="13">汽车</a></li>
+    <li class="more"><span>更多</span>
+      <div class="more-area">
+        <a href="" typeid="125">视频购物</a>
+      </div>
+    </li>
+  </ul>
+</div>
+        <!-- leftside end -->
+        <div id="mainSide">
+           <a href="#" id='top'></a>
+            <!-- banner end -->
+            <div class="recommend">
+{% if news_list %}
+	<ul class="list">
+		{% for news in news_list %}
+		
+		<li class="clearfix">
+			<div class="video-img">
+			
+				<a href="/{{news.0.id}}" target="_blank" title="{{ news.0.news_title}}"><img data-echo="" src="{{news.1}}"><i class="pic-tip video-tip"><span></span></i></a>
+			</div>
+			<div class="video-info">
+				<div class="video-info-inner">
+					<h3><a href="/{{news.0.id}}" target="_blank" title="{{ news.0.news_title}}">{{news.0.news_title}}</a></h3>
+					<div class="video-from">
+						<a href="" target="_blank" class="media-avatar"><img data-echo="" src=""></a>
+						<a href="/writer?writer_name={{news.0.writer.writer_name}}" target="_blank" class="source">{{news.0.writer.writer_name}}<em class="indent-tag"></em></a>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		{% endfor %}
+{% endif %}
+		
+	</ul>
+	<!-- div class="loading ball-pulse" style="display:block;"--->
+		<div></div>
+		<div></div>
+		<div></div> <a href="javascript:loadmore(type)" id="more">点击加载此处更多⋅</a>⋅<!-- /div--->
+</div>
+</div>
+        <!-- mainSide end -->
+        <div id="rightSide">
+            <div class="search">
+                <input type="text" placeholder="" autocomplete="off" id="N854735049407">
+                <i>搜索</i>
+            </div>
+            <div class="pane-module">
+                <div class="head">
+                    热门视频
+                </div>
+<ul class="content video-list">
+	<li class="video-item" id="tenant-box">
+		<dl> <dt class="pic">             <a href="http://ent.cctv.com/special/zgmgqz/" target="_blank" class="link"> <img src="active.png">              <i class="hot-tag video-tag"></i>  </a></dt>
+			<dd>
+				<div class="cell">
+					<a href="http://ent.cctv.com/special/zgmgqz/" target="_blank" class="link">
+						<h4>“中国梦”主题新创作歌曲</h4></a>
+					<p>
+						<a href="http://ent.cctv.com/special/zgmgqz/" target="_blank" class="link"> <img height="18" width="18" class="pic" src="./爆米花视频--爆出精彩视界_files/active.png"><span>中国梦</span></a>
+					</p>
+				</div>
+			</dd>
+		</dl>
+	</li>
+	<li class="video-item">
+		<dl>
+			<dt class="pic">
+                                                               <a href="" target="_blank" class="link"> <img data-echo="" src="./爆米花视频--爆出精彩视界_files/41810447.jpg">
+                                                                <i class="hot-tag video-tag"><span>00:10</span></i>  </a></dt>
+			<dd>
+				<div class="cell">
+					<a href="" target="_blank" class="link">
+						<h4>长的漂亮懂道理也多，这样的小姐姐做女朋友肯定容易相处</h4></a>
+					<p>
+						<a href="" target="_blank" class="link"> <img data-echo="" height="18" width="18" class="pic" src="user_default.gif"><span>踏风尘</span><em class="indent-tag"></em></a>
+					</p>
+				</div>
+			</dd>
+		</dl>
+	</li>
+</ul>
+            </div>
+            ﻿<div class="pane-module aboutUs">
+  <div class="head">关于我们</div>
+  <a href="" target="_blank">关于inews</a>
+  <a href="" target="_blank">联系我们</a>
+  <a href="" target="_blank">友情链接</a>
+  <a href="sitemap.xml/" target="_blank">网站地图</a>
+</div>
+<div class="pane-module link-other">
+  
+  <a href="http://www.12377.cn/" target="_blank" class="link-box">
+    <s class="icon icon-2"></s>网上有害信息举报专区
+  </a>
+  <a href="http://www.bj.cyberpolice.cn/index.htm" target="_blank" class="link-box">
+    <s class="icon icon-3"></s>网络110报警服务
+  </a>
+  <a href="http://jb.ccm.gov.cn/" target="_blank" class="link-box">
+    <s class="icon icon-5"></s>12318全国文化市场举报网站
+  </a>
+ 
+  <a href="javascript:void(0)" target="_blank">Copyrihgt©2017 爱新闻版权所有</a>
+</div>
+        </div>
+    </div>
+ <div id="toolbar">
+	<div class="refresh item">
+	</div>
+	<div class="returnToTop item"><a herf="#top" target='_self'></a>
+	</div>
+</div>
+    </form>
+    
+
+
+
+</body><script>
+$(document).scroll(function() {
+if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+loadmore();
+}
+});</script></html>
