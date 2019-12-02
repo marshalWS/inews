@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//crawl_news/items.py=utf-8
+encoding//crawl_news/main.py=utf-8
+encoding//crawl_news/middlewares.py=utf-8
+encoding//crawl_news/pipelines.py=utf-8
+encoding//crawl_news/settings.py=utf-8
