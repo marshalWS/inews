@@ -18,3 +18,5 @@
 ![image](https://github.com/w13411965905/inews/blob/master/Camera%20Roll/%E6%89%B9%E6%B3%A8%202019-11-28%20203240.jpg)
 
 ![image](https://github.com/w13411965905/inews/blob/master/Camera%20Roll/%E6%89%B9%E6%B3%A8%202019-11-28%20203633.jpg)
+
+配合https://github.com/w13411965905/crawl_news scrapy爬虫使用更佳
